@@ -1,0 +1,32 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+        - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+
+      - name: Build
+        run: go build -o chatapp .
+
+      - name: Run tests
+        run: go test ./...
+            
+    #   - name: Deploy
+    #     # Add deployment steps to deploy your application to your desired environment
+    #     # Examples: deploy to a cloud platform, a container registry, or a server
+
