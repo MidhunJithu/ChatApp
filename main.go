@@ -15,5 +15,5 @@ func init() {
 }
 
 func main() {
-	log.Info("Hello World")
+	log.Info("Hello World !")
 }
